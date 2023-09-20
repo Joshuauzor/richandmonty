@@ -16,28 +16,38 @@ A mini project to show the image of any available Rich and Monty character.
 
 The dependecies for this projects can be installed using.
 
-npm install
+```javascript
+    npm install
+```
 
 # or
 
-yarn install
+```javascript
+    yarn install
+```
 
 ## Usage
 
 #### For iOS (with Expo)
 
 ```javascript
- npm run ios
+    npm run ios
 ```
 
 #### or
 
-yarn ios
+```javascript
+    yarn ios
+```
 
 ### For Android (with Expo)
 
-npm run android
+```javascript
+    npm run android
+```
 
 # or
 
-yarn android
+```javascript
+    yarn android
+```
