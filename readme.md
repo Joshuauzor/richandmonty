@@ -24,15 +24,17 @@ yarn install
 
 ## Usage
 
-# For iOS (with Expo)
+#### For iOS (with Expo)
 
-npm run ios
+```javascript
+ npm run ios
+```
 
-# or
+#### or
 
 yarn ios
 
-# For Android (with Expo)
+### For Android (with Expo)
 
 npm run android
 
