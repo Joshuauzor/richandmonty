@@ -10,7 +10,7 @@ A mini project to show the image of any available Rich and Monty character.
 
 ## Features
 
-- List some key features of your project.
+- search characters.
 
 ## Installation
 
