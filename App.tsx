@@ -1,3 +1,4 @@
+// Import necessary components and libraries
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import {
@@ -9,47 +10,55 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
+// Define the main App component
 export default function App() {
-  const [input, setInput] = useState<string>('');
-  const [character, setCharacter] = useState<ICharacters | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [data, setData] = useState<Array<ICharacters>>([]);
+  // State variables to manage input, character data, loading state, and characters list
+  const [input, setInput] = useState<string>(''); // User input for character search
+  const [character, setCharacter] = useState<ICharacters | null>(null); // Selected character
+  const [loading, setLoading] = useState<boolean>(false); // Loading state
+  const [data, setData] = useState<Array<ICharacters>>([]); // List of characters
 
+  // Fetch characters from the API when the component mounts
   useEffect(() => {
     fetchCharacters();
   }, []);
 
+  // Function to fetch characters from the API
   const fetchCharacters = async () => {
-    setLoading(true);
+    setLoading(true); // Set loading state to true
     fetch('https://rickandmortyapi.com/api/character', {
       method: 'GET',
     })
       .then((response) => response.json())
       .then((responseData) => {
-        setData(responseData.results as ICharacters[]);
-        setLoading(false);
+        setData(responseData.results as ICharacters[]); // Store character data in state
+        setLoading(false); // Set loading state to false
       })
       .catch((error) => {
         console.error('Error:', error);
-        setLoading(false);
+        setLoading(false); // Set loading state to false in case of an error
       });
   };
 
+  // Function to handle form submission when the "Submit" button is pressed
   const handleSubmit = () => {
-    setCharacter(null);
+    setCharacter(null); // Reset the selected character
 
-    for (let index = 0; index < data.length; index++) {
-      const element = data[index];
-      if (element.name.toLowerCase() === input.toLowerCase()) {
-        setCharacter(element);
-      }
-      break;
+    // Iterate through the characters data to find a match based on user input
+    // Use the find method to find the first match in the data array
+    const foundCharacter = data.find(
+      (element) => element.name.toLowerCase() === input.toLowerCase(),
+    );
+
+    if (foundCharacter) {
+      setCharacter(foundCharacter); // Set the selected character if found
     }
   };
 
+  // Render the UI components
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Rick and Morty</Text>
+      <Text style={styles.title}>Rick and Morty guide.</Text>
       <TextInput
         value={input}
         placeholder="Enter character name"
@@ -65,10 +74,13 @@ export default function App() {
           style={styles.image}
         />
       )}
+
+      {/* Commented out section that displays a "Character Not Found" message */}
       {/* {!character && input.length > 0 && (
         <Text style={styles.notFound}>Character Not Found! Try again</Text>
       )} */}
 
+      {/* Button to trigger the character search */}
       <TouchableOpacity
         onPress={handleSubmit}
         style={styles.button}
@@ -77,11 +89,13 @@ export default function App() {
         <Text style={styles.buttonText}>Submit</Text>
       </TouchableOpacity>
 
+      {/* Display the status bar */}
       <StatusBar style="auto" />
     </View>
   );
 }
 
+// Styles for the components
 const styles = StyleSheet.create({
   container: {
     flex: 1,
