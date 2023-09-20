@@ -42,8 +42,8 @@ export default function App() {
       const element = data[index];
       if (element.name.toLowerCase() === input.toLowerCase()) {
         setCharacter(element);
-        break;
       }
+      break;
     }
   };
 
@@ -65,6 +65,9 @@ export default function App() {
           style={styles.image}
         />
       )}
+      {/* {!character && input.length > 0 && (
+        <Text style={styles.notFound}>Character Not Found! Try again</Text>
+      )} */}
 
       <TouchableOpacity
         onPress={handleSubmit}
@@ -104,6 +107,13 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginTop: 20,
+    color: '#000',
+  },
+  notFound: {
+    fontSize: 12,
+    fontWeight: 'normal',
+    marginTop: 20,
+    color: '#000',
   },
   buttonText: {
     color: 'white',
