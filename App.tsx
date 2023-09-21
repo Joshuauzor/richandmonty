@@ -75,11 +75,6 @@ export default function App() {
         />
       )}
 
-      {/* Commented out section that displays a "Character Not Found" message */}
-      {/* {!character && input.length > 0 && (
-        <Text style={styles.notFound}>Character Not Found! Try again</Text>
-      )} */}
-
       {/* Button to trigger the character search */}
       <TouchableOpacity
         onPress={handleSubmit}
@@ -120,12 +115,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginTop: 20,
-    color: '#000',
-  },
-  notFound: {
-    fontSize: 12,
-    fontWeight: 'normal',
     marginTop: 20,
     color: '#000',
   },
